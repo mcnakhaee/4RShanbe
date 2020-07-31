@@ -1,0 +1,34 @@
+[
+  {
+    "path": "posts/2020-07-28-corrr/",
+    "title": "همبستگي",
+    "description": "همبستگي متغيرها",
+    "author": [
+      {
+        "name": "mcnakhes",
+        "url": "mcnakhaee.com"
+      }
+    ],
+    "date": "2020-07-28",
+    "categories": [],
+    "preview": {},
+    "last_modified": "2020-07-28T23:02:16+02:00",
+    "input_file": {}
+  },
+  {
+    "path": "posts/welcome/",
+    "title": "به چارشنبه خوش آمديد",
+    "description": "در اين پست به شما توضيح مي دهم که چارشنبه چيست، چرا چارشنبه به وجود آمده و چه کار خواهيم کرد؟",
+    "author": [
+      {
+        "name": "محمد چناريان نخعي",
+        "url": "mcnakhaee.com"
+      }
+    ],
+    "date": "2020-07-28",
+    "categories": [],
+    "preview": {},
+    "last_modified": "2020-07-31T23:43:16+02:00",
+    "input_file": {}
+  }
+]
