@@ -23,6 +23,7 @@
 
 <meta property="description" itemprop="description" content="همبستگي متغيرها"/>
 
+<link rel="license" href="https://creativecommons.org/licenses/by/4.0/"/>
 
 <!--  https://schema.org/Article -->
 <meta property="article:published" itemprop="datePublished" content="2020-07-28"/>
@@ -45,12 +46,12 @@
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["همبستگي"]},{"type":"character","attributes":{},"value":["همبستگي متغيرها"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["mcnakhes"]},{"type":"character","attributes":{},"value":["mcnakhaee.com"]}]}]},{"type":"character","attributes":{},"value":["07-28-2020"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth","self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[2]},{"type":"logical","attributes":{},"value":[false]}]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["creative_commons","title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["CC BY"]},{"type":"character","attributes":{},"value":["همبستگي"]},{"type":"character","attributes":{},"value":["همبستگي متغيرها"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["mcnakhes"]},{"type":"character","attributes":{},"value":["mcnakhaee.com"]}]}]},{"type":"character","attributes":{},"value":["07-28-2020"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth","self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[2]},{"type":"logical","attributes":{},"value":[false]}]}]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["corrr_files/bowser-1.9.3/bowser.min.js","corrr_files/bowser-1.9.3/desktop.ini","corrr_files/desktop.ini","corrr_files/distill-2.2.21/desktop.ini","corrr_files/distill-2.2.21/template.v2.js","corrr_files/jquery-1.11.3/desktop.ini","corrr_files/jquery-1.11.3/jquery.min.js","corrr_files/webcomponents-2.0.0/desktop.ini","corrr_files/webcomponents-2.0.0/webcomponents.js","desktop.ini"]}
+  {"type":"character","attributes":{},"value":["corrr_files/bowser-1.9.3/bowser.min.js","corrr_files/desktop.ini","corrr_files/distill-2.2.21/template.v2.js","corrr_files/jquery-1.11.3/jquery.min.js","corrr_files/webcomponents-2.0.0/webcomponents.js","desktop.ini"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 
@@ -1280,6 +1281,66 @@ document.addEventListener('DOMContentLoaded', function() {
   <script src="../../site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="../../site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
+<style type="text/css">
+
+.distill-site-nav {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: #1a3771;
+  font-size: 15px;
+  font-weight: 300;
+  direction: rtl;
+}
+
+.distill-site-nav a {
+  color: inherit;
+  text-decoration: none;
+  direction: rtl;
+}
+
+.distill-site-nav a:hover {
+  color: white;
+  direction: rtl;
+}
+
+.distill-site-header {
+  direction: rtl;
+}
+
+.distill-site-footer {
+}
+
+
+.posts-list .description h2
+.posts-list .description p {
+  
+  direction: rtl;
+}
+
+.posts-list {
+  margin-top: 60px;
+  margin-bottom: 24px;
+  direction: rtl;
+
+}
+
+@media print {
+  .distill-site-nav {
+    display: none;
+  }
+}
+
+  
+d-article {
+  font-weight: 300;
+  direction: rtl;
+}
+
+
+d-article iframe {
+  border: none;
+  direction: rtl;
+}
+</style>
 <!--/radix_placeholder_site_in_header-->
 
 
@@ -1303,6 +1364,12 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="nav-right">
 <a href="../../index.html">Home</a>
 <a href="../../about.html">About</a>
+<a href="https://github.com/teresashchen">
+<i class="fa fa-github" aria-hidden="true"></i>
+</a>
+<a href="https://twitter.com/?lang=en">
+<i class="fa fa-twitter" aria-hidden="true"></i>
+</a>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
 </div>
 </nav>
@@ -1323,8 +1390,29 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <div class="d-article">
-<p>Distill is a publication format for scientific and technical writing, native to the web.</p>
-<p>Learn more about using Distill at <a href="https://rstudio.github.io/distill" class="uri">https://rstudio.github.io/distill</a>.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<h3 id="section"></h3>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+[1] &quot;rcid&quot;         &quot;country&quot;      &quot;country_code&quot; &quot;vote&quot;        </code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+# A tibble: 6 x 4
+   rcid US    CA    CU   
+  &lt;int&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;
+1     3 yes   no    yes  
+2     4 no    no    no   
+3     5 no    no    yes  
+4     6 no    no    yes  
+5     7 no    no    yes  
+6     8 no    yes   yes  </code></pre>
+</div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -1336,7 +1424,12 @@ document.addEventListener('DOMContentLoaded', function() {
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->
 <!--radix_placeholder_appendices-->
-<div class="appendix-bottom"></div>
+<div class="appendix-bottom">
+  <h3 id="updates-and-corrections">Corrections</h3>
+  <p>If you see mistakes or want to suggest changes, please <a href="https://github.com/mcnakhaee/4RShanbe/issues/new">create an issue</a> on the source repository.</p>
+  <h3 id="reuse">Reuse</h3>
+  <p>Text and figures are licensed under Creative Commons Attribution <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Source code is available at <a href="https://github.com/mcnakhaee/4RShanbe">https://github.com/mcnakhaee/4RShanbe</a>, unless otherwise noted. The figures that have been reused from other sources don't fall under this license and can be recognized by a note in their caption: "Figure from ...".</p>
+</div>
 <!--/radix_placeholder_appendices-->
 <!--radix_placeholder_navigation_after_body-->
 <!--/radix_placeholder_navigation_after_body-->
