@@ -17,7 +17,25 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-Distill is a publication format for scientific and technical writing, native to the web.
+```{r}
+#devtools::install_github("dgrtwo/unvotes")
+```
 
-Learn more about using Distill at <https://rstudio.github.io/distill>.
+### 
+```{r message=FALSE, warning=FALSE}
+library(corrr)
+library(tidyverse)
+library(unvotes)
+```
+
+```{r}
+names(un_votes)
+```
+
+```{r}
+set_1 <- un_votes %>% 
+  filter(country_code %in% c('US','CA','CU')) %>% 
+           pivot_wider(c(rcid),names_from = country_code   ,values_from = vote) 
+head(set_1) 
+```
 

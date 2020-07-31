@@ -9,4 +9,13 @@ navbar:
       href: index.html
     - text: "About"
       href: about.html
-output: distill::distill_article
+    - icon: fa fa-github
+      href: https://github.com/teresashchen
+    - icon: fa fa-twitter
+      href: https://twitter.com/?lang=en
+repository_url: https://github.com/mcnakhaee/4RShanbe
+creative_commons: CC BY
+output: 
+  distill::distill_article:
+    css: styles.css
+exclude: ["*.gz", "*.zip"]
