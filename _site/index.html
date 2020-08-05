@@ -1271,6 +1271,14 @@
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <style type="text/css">
+  h1,h2,h3,h4,h5,h6, title, body {
+    direction: rtl;
+    
+  }
+  d-code {
+    direction: ltr;
+    
+  }
   
   .distill-site-nav {
     color: rgba(255, 255, 255, 0.8);
@@ -1319,15 +1327,19 @@
   }
   
     
-  d-article {
+  .d-article {
     font-weight: 300;
     direction: rtl;
   }
   
   
-  d-article iframe {
+  .d-article iframe {
     border: none;
     direction: rtl;
+  }
+  
+  #code-container {
+    direction: ltr;
   }
   </style>
   <!--/radix_placeholder_site_in_header-->
@@ -1354,7 +1366,7 @@
 <div class="nav-right">
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
-<a href="https://github.com/teresashchen">
+<a href="https://github.com/mcnakhaee">
 <i class="fa fa-github" aria-hidden="true"></i>
 </a>
 <a href="https://twitter.com/?lang=en">
@@ -1684,11 +1696,11 @@ function init_posts_list() {
 
 
 
-<div class="posts-container posts-apply-limit l-page">
+<div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
 <div class="posts-list">
 <h1 class="posts-list-caption">چارشنبه</h1>
 <a href="posts/2020-07-28-corrr/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
+<script class="post-metadata" type="text/json">{"categories":["مصورسازي","ggplot2"]}</script>
 <div class="metadata">
 <div class="publishedDate">July 28, 2020</div>
 </div>
@@ -1713,6 +1725,21 @@ function init_posts_list() {
 <p>در اين پست به شما توضيح مي دهم که چارشنبه چيست، چرا چارشنبه به وجود آمده و چه کار خواهيم کرد؟</p>
 </div>
 </a>
+</div>
+<div class="posts-sidebar">
+<div class="sidebar-section categories">
+<h3>Categories</h3>
+<ul>
+<li>
+<a href="#ggplot2">ggplot2</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#مصورسازي">مصورسازي</a>
+<span class="category-count">(1)</span>
+</li>
+</ul>
+</div>
 </div>
 <div class="posts-more">
 <a href="#">More articles &raquo;</a>

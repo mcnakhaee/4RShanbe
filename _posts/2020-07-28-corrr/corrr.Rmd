@@ -6,11 +6,16 @@ author:
   - name: mcnakhes
     url: mcnakhaee.com
 date: 07-28-2020
+editor_options: 
+  chunk_output_type: consoles
 output:
   distill::distill_article:
     toc: true
     toc_depth: 2
-    self_contained: false
+    self_contained: true
+categories: 
+  - مصورسازی
+  - ggplot2
 ---
 
 ```{r setup, include=FALSE}
@@ -21,14 +26,17 @@ knitr::opts_chunk$set(echo = FALSE)
 #devtools::install_github("dgrtwo/unvotes")
 ```
 
-### 
-```{r message=FALSE, warning=FALSE}
+### مقدمه
+
+
+### کتابخانه های مورد نیاز
+```{r include = TRUE,message=FALSE, warning=FALSE,echo=TRUE}
 library(corrr)
 library(tidyverse)
 library(unvotes)
 ```
 
-```{r}
+```{r,echo=TRUE}
 names(un_votes)
 ```
 

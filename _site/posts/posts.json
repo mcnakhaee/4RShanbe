@@ -10,9 +10,12 @@
       }
     ],
     "date": "2020-07-28",
-    "categories": [],
+    "categories": [
+      "مصورسازي",
+      "ggplot2"
+    ],
     "preview": {},
-    "last_modified": "2020-08-01T00:28:14+02:00",
+    "last_modified": "2020-08-01T14:11:41+02:00",
     "input_file": {}
   },
   {

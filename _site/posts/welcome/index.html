@@ -1282,6 +1282,14 @@ document.addEventListener('DOMContentLoaded', function() {
   <script src="../../site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
 <style type="text/css">
+h1,h2,h3,h4,h5,h6, title, body {
+  direction: rtl;
+  
+}
+d-code {
+  direction: ltr;
+  
+}
 
 .distill-site-nav {
   color: rgba(255, 255, 255, 0.8);
@@ -1330,15 +1338,19 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 
   
-d-article {
+.d-article {
   font-weight: 300;
   direction: rtl;
 }
 
 
-d-article iframe {
+.d-article iframe {
   border: none;
   direction: rtl;
+}
+
+#code-container {
+  direction: ltr;
 }
 </style>
 <!--/radix_placeholder_site_in_header-->
@@ -1364,7 +1376,7 @@ d-article iframe {
 <div class="nav-right">
 <a href="../../index.html">Home</a>
 <a href="../../about.html">About</a>
-<a href="https://github.com/teresashchen">
+<a href="https://github.com/mcnakhaee">
 <i class="fa fa-github" aria-hidden="true"></i>
 </a>
 <a href="https://twitter.com/?lang=en">
