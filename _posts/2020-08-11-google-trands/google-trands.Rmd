@@ -20,7 +20,7 @@ library(trendyy)
 library(tidyverse)
 ```
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 trendy(search_terms = c('Iran')) %>% 
   get_interest()
 trendyy::get_interest_country()

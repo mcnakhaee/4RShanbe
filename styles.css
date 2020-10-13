@@ -1,23 +1,27 @@
-@font-face {
-
-   font-family: 'Nahid-FD' ;
-   src: url('/fonts/Nahid-FD.ttf') format('truetype');
-
- }
-
 h1,h2,h3,h4,h5,h6, title, body {
   direction: rtl;
   
 }
+
+
 d-code {
   direction: ltr;
-  font-family:'Nahid-FD' 
+  color: #383838;
+  font-weight: 400;
+  font-size: 0.9em;
+}
+
+code {
+  font-family: 'Fira Mono', sans-serif;
+  color: #383838;
+  font-weight: 400;
+  font-size: 0.9em;
 }
 
 .distill-site-nav {
-  color: rgba(255, 255, 255, 0.8);
-  background-color: #1a3771;
-  font-size: 15px;
+  color: #00f5d4;
+  background-color: #14213d;
+  font-size: 16px;
   font-weight: 300;
   direction: rtl;
 }
@@ -64,7 +68,6 @@ d-code {
 .d-article {
   font-weight: 300;
   direction: rtl;
-   font-family:'Nahid-FD' 
 }
 
 
@@ -73,6 +76,3 @@ d-code {
   direction: rtl;
 }
 
-#code-container {
-  direction: ltr;
-}
