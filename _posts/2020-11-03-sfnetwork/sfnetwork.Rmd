@@ -1,0 +1,88 @@
+---
+title: "sfnetwork"
+description: |
+  A short description of the post.
+author:
+  - name: mcnakhes
+    url: mcnakhaee.com
+date: 11-03-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(sf)
+library(ggthemes)
+library(tidygraph)
+```
+
+
+```{r,eval=FALSE}
+remotes::install_github('luukvdmeer/sfnetworks')
+```
+```{r}
+library(sfnetworks)
+```
+
+بر اساس فلسلفه کتابخانه tidygraph ساخته شده است. 
+در tidygraph مولفه های یک گراف به صورت دو دیتافریم برای گره ها و یال های گراف در نظر گرفته می شوند.
+
+در sfnetwork هم این فلسفه به این صورت پیاده سازی شده است که گره های گراف را اشیاء ساخته شده از نوع `rf` تشکیل می دهند
+یال های هم ستون های `from` و `to` از نقاط 
+
+
+
+```{r}
+roads_iran <- read_sf('C:\\datasets\\iran-latest-free.shp\\gis_osm_roads_free_1.shp')
+
+```
+
+```{r}
+#names(roads_iran)
+lat <- 30.2839 #center point latitude
+long <- 57.06 #center point longitude
+rad <- 4000 #radius, in meters, around the center point to map
+crs <- 102013 
+pt <- data.frame(lat = lat, long = long)
+pt <- pt %>% st_as_sf(coords = c("long", "lat"), crs = 4326) %>% st_transform(2111)
+
+circle <- st_buffer(pt, dist = 3000)
+circle <- circle %>% st_transform(st_crs(roads_iran))
+allroads <- st_intersection(circle, roads_iran)
+
+
+ggplot() +
+  # Plot water first, layer the rest on top
+  #geom_sf(data = buildings_mosque,aes(color = type,
+  #        fill = type), size = 0.01) +
+  geom_sf(data  = allroads,alpha = 0.1)+
+  #scale_colour_colorblind() +
+  #gghighlight(fclass =='cycleway')+
+  theme_void()
+```
+```{r}
+allroads
+```
+```{r}
+net <- allroads %>% 
+  mutate(geometry = st_cast(geometry,"LINESTRING")) %>% 
+  as_sfnetwork() 
+  
+  
+```
+```{r}
+net %>% 
+  st_crs()
+```
+
+```{r}
+net %>% 
+  st_transform(3035)
+```
+

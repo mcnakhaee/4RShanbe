@@ -2,9 +2,20 @@ h1,h2,h3,h4,h5,h6, title, body {
   direction: rtl;
   
 }
+
+
 d-code {
   direction: ltr;
-  
+  color: #383838;
+  font-weight: 400;
+  font-size: 0.9em;
+}
+
+code {
+  font-family: 'Fira Mono', sans-serif;
+  color: #383838;
+  font-weight: 400;
+  font-size: 0.9em;
 }
 
 .distill-site-nav {
@@ -65,6 +76,3 @@ d-code {
   direction: rtl;
 }
 
-#code-container {
-  direction: ltr;
-}

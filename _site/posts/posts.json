@@ -1,7 +1,7 @@
 [
   {
-    "path": "posts/2020-10-13-ggridges/",
-    "title": "رسم نمودارهای Ridge در R",
+    "path": "posts/2020-11-01-docker-and-r/",
+    "title": "docker and R",
     "description": "A short description of the post.",
     "author": [
       {
@@ -9,61 +9,26 @@
         "url": "mcnakhaee.com"
       }
     ],
-    "date": "2020-10-13",
+    "date": "2020-11-01",
     "categories": [],
     "preview": {},
-    "last_modified": "2020-10-13T12:09:23+02:00",
-    "input_file": "ggridges.utf8.md"
-  },
-  {
-    "path": "posts/2020-08-11-google-trands/",
-    "title": "نگاهی به روندهای جستجو در گوگل (Google Trends)",
-    "description": {},
-    "author": [
-      {
-        "name": "mcnakhes",
-        "url": "mcnakhaee.com"
-      }
-    ],
-    "date": "2020-08-11",
-    "categories": [],
-    "preview": {},
-    "last_modified": "2020-10-13T12:02:21+02:00",
-    "input_file": "google-trands.utf8.md"
-  },
-  {
-    "path": "posts/2020-07-28-corrr/",
-    "title": "همبستگی",
-    "description": "همبستگی متغیرها",
-    "author": [
-      {
-        "name": "mcnakhes",
-        "url": "mcnakhaee.com"
-      }
-    ],
-    "date": "2020-07-28",
-    "categories": [
-      "مصورسازی",
-      "ggplot2"
-    ],
-    "preview": {},
-    "last_modified": "2020-08-18T14:09:29+00:00",
+    "last_modified": "2020-11-02T18:28:40+01:00",
     "input_file": {}
   },
   {
-    "path": "posts/welcome/",
-    "title": "به چارشنبه خوش آمدید",
-    "description": "در این پست به شما توضیح می دهم که چارشنبه چیست، چرا چارشنبه به وجود آمده و چه کار خواهیم کرد؟",
+    "path": "posts/2020-10-22-echarts4r/",
+    "title": "echarts4r",
+    "description": "A short description of the post.",
     "author": [
       {
-        "name": "محمد چناریان نخعی",
+        "name": "mcnakhes",
         "url": "mcnakhaee.com"
       }
     ],
-    "date": "2020-07-28",
+    "date": "2020-10-22",
     "categories": [],
-    "preview": {},
-    "last_modified": "2020-08-18T14:09:29+00:00",
+    "preview": "posts/2020-10-22-echarts4r/echarts4r_files/figure-html5/unnamed-chunk-2-1.png",
+    "last_modified": "2020-10-22T18:39:05+02:00",
     "input_file": {}
   }
 ]

@@ -1,0 +1,143 @@
+---
+title: "echarts4r"
+description: |
+  A short description of the post.
+author:
+  - name: mcnakhes
+    url: mcnakhaee.com
+date: 10-22-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at <https://rstudio.github.io/distill>.
+
+```{r}
+library(tidytext)
+library(tidyverse)
+library(widyr)
+library(ggraph)
+library(igraph)
+library(tidygraph)
+library(delgosha)
+library(echarts4r)
+library(ggthemes)
+import_all_fonts()
+```
+
+```{r fig.height=10,fig.width=10}
+shanameh <- read_csv('shahnameh_characters.csv')
+shanameh %>% 
+  drop_na() %>% 
+as_tbl_graph(directed = TRUE) %>% 
+activate(nodes ) %>% 
+  mutate(betweenness_centrality_score = centrality_betweenness(),
+         degree_centrality_score = centrality_degree()) %>% 
+    filter(degree_centrality_score > 3) %>% 
+  mutate(degree_centrality_score = centrality_degree()) %>% 
+  filter(betweenness_centrality_score > 1,
+         degree_centrality_score >0 ) %>% 
+filter(!is.na(name)) %>% 
+  
+
+  ggraph(layout = 'nicely') +
+  geom_edge_link(aes(color = relationship),width =1.5,alpha = 0.5) +
+  geom_node_text(aes(label = name),size = 6 ,repel  = TRUE,family = 'Nahid FD') +
+  geom_node_point(size = 4,alpha =0.6) +
+  labs(title = 'شبکه روابط شخصیت های شاهنامه',
+       colour = '',
+       caption = 'منبع داده ها: وبسایت نیمروز') +
+  scale_edge_color_manual(values = c(
+    '#d62828',
+    '#2a9d8f',
+    '#e9c46a',
+    '#f4a261',
+    '#e76f51',
+    '#fe938c',
+    '#e6b89c',
+    '#ead2ac',
+    '#9cafb7',
+    '#4281a4',
+    '#06d6a0'
+  )) +
+   guides(
+   colour = guide_colorbar(override.aes = list(alpha = 0.9)))+
+  theme_void() +
+  theme_fa() +
+  theme(legend.position = 'top',
+        legend.title = element_blank(),
+        legend.text = element_text(size = 15),
+        plot.margin = margin(30,30,30,30))
+```
+
+```{r}
+
+graph_edges_tbl <- shanameh %>%
+rename(from = character_1, to = character_2) 
+  
+
+ggraph_df <-  graph_edges_tbl  %>%  
+    as_tbl_graph(directed  = FALSE) %>%
+      activate(nodes) %>%
+      mutate(
+        betweenness_degree = centrality_betweenness(),
+        centrality_degree = centrality_degree(),
+        community = as.factor(group_louvain())
+      ) 
+      
+graph_nodes_tbl <- ggraph_df %>%
+    as_tibble()
+node_names <- graph_nodes_tbl %>% distinct(name) %>%pull()
+node_size <- graph_nodes_tbl%>% pull(centrality_degree)
+node_group <- graph_nodes_tbl%>%pull(community) 
+
+
+edges <- data.frame(
+  source = graph_edges_tbl$from,
+  target = graph_edges_tbl$to,
+  stringsAsFactors = FALSE
+)
+nodes <- data.frame(
+  name = node_names,
+  value = node_size,
+  size = node_size/3,
+  grp = node_group,
+  symbol =  "circle",
+  stringsAsFactors = FALSE
+)
+```
+
+
+```{r}
+e_charts() %>% 
+  e_graph(
+                    roam = T,
+          draggable = T,
+          cursor= 'pointer',
+          # symbol = paste0('path://', figure),  # It works, but all the node share same figure.
+          symbolKeepAspect = T,
+          focusNodeAdjacency = T,
+          # animation  = TRUE,
+          #edgeSymbol = c('circle', 'arrow'),
+          #itemStyle = list(color = 'black', borderColor='black'),
+          lineStyle = list(color = 'target',width = 1),
+        
+          #category = list(symbol = node_group),
+         # textBorderColor = 'transparent',
+          force.gravity = 0, edgeLabel = 1) %>% 
+  e_graph_nodes(nodes, name, value, size, grp, symbol,legend = T) %>% 
+  e_graph_edges(edges, source, target  ) %>% 
+  e_title("Strategic Rivalry Between Nations and States",subtext = 'Strategic Rivalry Between Nations and States') %>% 
+  e_modularity() %>% 
+  #e_labels(fontSize = 5) %>% 
+  e_toolbox_feature(feature = "saveAsImage", title = "Save As Image") %>% 
+  e_legend(show = T,type = "plain")
+```
+

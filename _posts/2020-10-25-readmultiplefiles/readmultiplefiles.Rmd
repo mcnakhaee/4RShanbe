@@ -1,0 +1,76 @@
+---
+title: "چطور چندین فایل را به صورت همزمان بخوانیم؟"
+description: |
+  A short description of the post.
+author:
+  - name: mcnakhes
+    url: mcnakhaee.com
+date: 10-25-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+
+```{r}
+library(fs)
+library(tidyverse)
+library(beyt)
+```
+
+
+
+```{r}
+file_paths <- dir_ls('data')
+
+file_paths
+```
+
+```{r}
+
+survey_1395_1398 <- data.frame()
+
+for (i in seq_along(file_paths)) {
+  survey_1395_1398 <- bind_rows(survey_1395_1398,read_csv(file_paths[i]))
+  print(dim(survey_1395_1398))
+}
+
+# 
+
+survey_1395_1398 %>% glimpse()
+```
+
+### راه حل سریع تر
+```{r}
+
+survey_1395_1398 <- data.frame()
+survey_1395_1398 <- map(file_paths, function (file) {
+  read_csv(file)
+})
+
+survey_1395_1398 <- bind_rows(survey_1395_1398)
+dim(survey_1395_1398)
+```
+
+
+# نوشتن چندین فایل
+
+```{r}
+new_directory <- 'poems/'
+dir_create(new_directory)
+poems %>% 
+  head(2000) %>% 
+  mutate(path = paste(new_directory,poet,'.csv',sep = '')) %>% 
+  group_by(poet) %>% 
+group_split() %>% 
+  map(.f =function(data){
+    write_csv(data, path = unique(data$path))
+  })
+```
+
+

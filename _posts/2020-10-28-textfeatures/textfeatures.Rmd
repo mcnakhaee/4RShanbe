@@ -1,0 +1,82 @@
+---
+title: "textfeatures"
+description: |
+  A short description of the post.
+author:
+  - name: mcnakhes
+    url: mcnakhaee.com
+date: 10-28-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message  = FALSE, warning = FALSE)
+```
+
+
+
+```{r}
+library(textfeatures)
+library(tidyverse)
+library(lubridate)
+library(ggthemes)
+library(uwot)
+```
+
+```{r}
+zarif_tweets <- read_csv('data/zarif_tweets.csv')
+glimpse(zarif_tweets[1:10])
+```
+
+```{r}
+zarif_text_features <- textfeatures(zarif_tweets,normalize = FALSE,verbose = FALSE)
+
+zarif_text_features
+```
+```{r}
+zarif_tweets <- bind_cols(zarif_tweets,zarif_text_features)
+zarif_tweets <- zarif_tweets %>% 
+  mutate(created_at_day = floor_date(created_at,unit = 'day'),
+         created_at_week = floor_date(created_at,unit = 'week'))
+  
+```
+
+```{r fig.width=20}
+zarif_tweets %>% 
+  group_by(created_at_week) %>% 
+  summarise(avg_n_words = mean(n_words)) %>% 
+  ggplot(aes(x = created_at_week,y = avg_n_words)) +
+  geom_line()+
+  geom_point()
+```
+```{r fig.width=20}
+zarif_tweets %>% 
+  group_by(created_at_week) %>% 
+  summarise(avg_n_mentions = mean(n_mentions),
+            avg_n_hashtags = mean(n_hashtags),
+            avg_n_first_personp = mean(n_first_personp)) %>% 
+  ggplot() +
+  geom_line(aes(x = created_at_week,y = avg_n_mentions),color = 'indianred',size = 2)+
+  geom_line(aes(x = created_at_week,y = avg_n_hashtags),color = '#2a9d8f',size = 2)
+
+```
+```{r}
+umap_emb <- zarif_tweets%>% 
+  select(w1:w100) %>% 
+  uwot::umap()
+
+zarif_tweets$umap_emb_1 <- umap_emb[,1]
+zarif_tweets$umap_emb_2 <- umap_emb[,2]
+
+```
+
+```{r}
+zarif_tweets %>% 
+  mutate(created_at_year = as.factor(floor_date(created_at,unit = 'year'))) %>% 
+  ggplot(aes(umap_emb_1,umap_emb_2,color = created_at_year)) +
+  geom_point(alpha = 0.5)
+```
+

@@ -1,0 +1,90 @@
+---
+title: "مصورسازی داده های متنی - آشنایی با کتابخانه ggpage"
+description: |
+  A short description of the post.
+author:
+  - name: mcnakhes
+    url: mcnakhaee.com
+date: 10-14-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE,message = FALSE)
+```
+
+
+راه های مختلفی برای مصورسازی داده های متنی وجود دارد. مثلا محبوب ترین روش نشان دادن داده های متنی استفاده از ابرکلمه ها (wordclouds) است. البته ابرکلمات بیش از حد مورد استفاده قرار می گیرند و  جذابیت قبلشان را دیگر ندارند. در این پست  به شما نشان می دهم که چطور با یک روش دیگر و جالب داده های متنی را مصورسازی کنیم.
+
+
+```{r eval=FALSE}
+install.packages("ggpage")
+```
+```{r}
+library(tidyverse)
+library(ggpage)
+library(beyt)
+library(delgosha)
+library(ggthemes)
+```
+
+```{r}
+poems %>% 
+  filter(poet == 'فردوسی') %>% 
+  head()
+```
+
+
+کتابخانه `ggpage` دو تابع اصلی دارد:
+
+1. `ggpage_build` که برای ما یک دیتافریم می سازد که هر سطر آن را یک کلمه و محل قرار گیری آن کلمه در نمودار تشکیل می دهد.
+2. `ggpage_plot` 
+
+```{r}
+
+ferdowsi <- poems %>% 
+  #filter(poet == 'فردوسی') %>%
+  filter(century == 3) %>% 
+  rename(text = poem,
+         book = book_title) %>%  
+  separate_rows(text,sep = '   ') %>% 
+  head(5000) 
+  
+```
+
+
+```{r fig.height=15, fig.width=15}
+#ncol = 30,nrow = 30
+ferdowsi %>% 
+  #head() %>% 
+  ggpage_build(ncol = 30,nrow = 30) %>% 
+  #filter(!is.na(word)) %>% View()
+  ggpage_plot() +
+  theme_fa()
+  
+```
+این نمودار به خودی خود نمودار خیلی کاربردی نیست. با این حال می توانیم با کمی نغییر  نمودارهای جالبی با آن بسازیم.
+
+راست به چپ
+
+```{r fig.height=15, fig.width=15}
+
+ferdowsi %>% 
+  
+  ggpage_build(ncol = 30,nrow = 30,align = 'both') %>% 
+  mutate(character_ = case_when(word == 'رستم' ~ 'rostam',
+                                word == 'فریدون' ~'fereydoon',
+                                word == '' ~'sohrab',
+                                word == 'اسفندیار'~ 'esfandyar',
+                                TRUE ~ 'other')) %>% 
+  ggpage_plot(aes(fill = character_ )) +
+  scale_fill_tableau()+
+  theme_fa()
+  
+```
+
+
+
+

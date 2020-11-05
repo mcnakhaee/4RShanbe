@@ -1,0 +1,57 @@
+---
+title: "readability"
+description: |
+  A short description of the post.
+author:
+  - name: mcnakhes
+    url: mcnakhaee.com
+date: 10-29-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message  = FALSE, warning = FALSE)
+```
+
+
+```{r}
+library(fs)
+library(tidyverse)
+library(readability)
+```
+```{r}
+# dirs <- fs::dir_ls('Corpus of Presential Speeches/',recurse = T)
+# 
+# for (dir in dirs) {
+#  print(dir) 
+#   if (condition) {
+#     
+#   }
+# }
+# 
+# read_file('Corpus of Presential Speeches/adams/adams_speeches_000.txt')
+
+zarif_tweets_readability <- zarif_tweets %>% 
+  #head() %>% 
+  with(readability(text,list(created_at_week))) 
+```
+
+```{r}
+head(zarif_tweets_readability)
+```
+```{r}
+zarif_tweets_readability %>% 
+  #bind_cols(zarif_tweets) %>% 
+  ggplot(aes(x =created_at_week,y = Flesch_Kincaid )) +
+  geom_line()
+```
+```{r}
+biden_tweets <- read_csv("data/JoeBidenTweets.csv")
+biden_tweets %>% 
+  with(readability(tweet,list(timestamp))) %>% 
+    ggplot(aes(x =timestamp,y = Flesch_Kincaid )) +
+  geom_line()
+```
+

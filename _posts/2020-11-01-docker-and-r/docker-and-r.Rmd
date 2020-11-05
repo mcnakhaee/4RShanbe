@@ -1,0 +1,111 @@
+---
+title: "docker and R"
+description: |
+  A short description of the post.
+author:
+  - name: mcnakhes
+    url: mcnakhaee.com
+date: 11-01-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### نصب
+ ابتدا باید داکر را نصب کنیم. 
+ 
+ 
+ 
+ ### اجرای RStudio در داکر
+ 
+ 
+ کد زیر را در محیط خط فرمان اجرا می کنیم:
+ 
+```{bash eval = FALSE}
+docker run --rm -p 8787:8787 rocker/verse
+
+```
+ 
+ کاری که این خط کدانجام می دهد این است که یک کانتینر داکر که Rstudio و چندین کتابخانه کاربردی R را در خود دارد برای ما اجرا می کند.
+ برای دسترسی به RStudio باید مرورگرمان را باز کنیم وآدرس زیر را در مرورگر وارد کنیم:
+ 
+ `192.168.99.100:8787`
+ 
+ 
+ وقتی که این آدرس را وارد و اجرا کردیم یک صفحه لاگین برای ما باز می شود. نام کاربری و رمز عبوری که برای ورود به محیط RStudio نیاز داریم کلمه rstudio است (سورپرایز!)
+ 
+ 
+ -p به داکر می گوید که RStudio را در کدام پورت برای ما اجرا کند.
+ 
+ -rm هم وقتی که از یک کانتینر خارج می شویم آن را برای ما پاک می کند. این کار برای ذخیره حافظه به کار ما می آید.
+ 
+ اگر این کانتینر را از قبل بر روی کامپیوتر نصب نکرده باشیم کاری که داکر می کند این است که آن را از Docker Hub برای ما دانلود و اجرا می کند.
+ 
+ 
+ 
+ ### اتصال کانتینر داکر به فایل ها و فولدرهای کامپیوتر
+ 
+ راه حل این است که کانتینر را به یک volume (مثلا یک فولدر روی هارد سیستم) متصل کنیم.
+ 
+ برای این کار وقتی که می خواهیم کانتینتر را بسازیم از `-v` به همراه مسیر فولدری که می خواهیم به کانتینر متصل کنیم استفاده می کنیم.
+ 
+ 
+```{bash,eval = FALSE}
+docker run --rm -e PASSWORD=<Your-PASS> -v c:\data:/home/rstudio/test -p 8787:8787 rocker/verse
+
+```
+ 
+ 
+ ### نصب کتابخانه
+ اگر کتابخانه ای را بر روی کانتینر داکر RStudio نصب کنیم ولی از کانتینر خارج شویم این کتابخانه ها هم پاک می شوند
+ 
+ راه حل این است که تصویر داکر را با دستور `Docker commit` ذخیره کنیم. 
+ 
+ بعد از این کتابخانه های موردنظرمان را نصب کردیم یک ترمینال دیگر باز می کنیم و دستور زیر را در آن وارد می کنیم.
+ 
+```{bash,eval = FALSE}
+docker ps
+```
+ این دستور لیستی از  کانتینرهای در حال اجرا به ما می دهد.
+ 
+```{bash ,eval = FALSE}
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                    NAMES
+6e66a51ccf9a        rocker/verse        "/init"             3 minutes ago       Up 3 minutes        0.0.0.0:8787->8787/tcp   fervent_mclean
+```
+ 
+ 
+```{bash,eval = FALSE}
+$ docker commit -m 'devtools+remotes' 6e66 verse_dev
+
+
+```
+ 
+ حالا لیست  ایمیج های داکر را می توانیم بررسی کنیم تا ببینیم که ایمیج ما ذخیره شده است یا خیر.
+ 
+ 
+### نصب dependency ها بر روی کانتینر داکر
+```{bash,eval = FALSE}
+docker ps # find the ID of the running container you want to add a package to
+docker exec -it <container-id> bash # a docker command to start a bash shell in your container
+apt-get install libgsl0-dev # install the package, in this case GSL
+```
+
+
+
+```{bash,eval = FALSE}
+docker save verse_dev > verse_dev.tar
+```
+
+```{bash,eval = FALSE}
+docker load --input  verse_dev.tar
+```
+
+
+
+### ذخیره کردن  کانتینتر
+
+
