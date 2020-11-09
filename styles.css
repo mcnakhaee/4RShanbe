@@ -12,6 +12,7 @@ d-code {
 }
 
 code {
+  direction: ltr;
   font-family: 'Fira Mono', sans-serif;
   color: #383838;
   font-weight: 400;
@@ -74,5 +75,10 @@ code {
 .d-article iframe {
   border: none;
   direction: rtl;
+}
+
+.sourceCode {
+  direction: ltr;
+  font-family: 'Fira Mono', sans-serif;
 }
 

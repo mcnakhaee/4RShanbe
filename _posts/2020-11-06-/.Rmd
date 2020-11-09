@@ -1,0 +1,22 @@
+---
+title: "بررسی داده های انتخابات آمریکا"
+description: |
+  A short description of the post.
+author:
+  - name: mcnakhes
+    url: mcnakhaee.com
+date: 11-06-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+در این پست قصد دارم  داده های انتخابات آمریکا را بررسی کنم.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+
+

@@ -24,7 +24,7 @@ library(tidyverse)
 library(ggridges)
 library(delgosha)
 library(ggthemes)
-#import_all_fonts()
+import_all_fonts()
 
 ```
 

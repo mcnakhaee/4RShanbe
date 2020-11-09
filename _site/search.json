@@ -1,0 +1,20 @@
+{
+  "articles": [
+    {
+      "path": "about.html",
+      "title": "درباره این وبسایت",
+      "description": "Some additional details about the blog",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2020-11-06T09:56:11+00:00"
+    },
+    {
+      "path": "index.html",
+      "title": "چارشنبه",
+      "author": [],
+      "contents": "\nچارشنبه\n\n\n\n",
+      "last_modified": "2020-11-06T09:56:13+00:00"
+    }
+  ],
+  "collections": ["posts/posts.json"]
+}
