@@ -8,13 +8,26 @@ author:
 date: 10-14-2020
 output:
   distill::distill_article:
+    highlight: rstudio
+    highlight_downlit: true
+    toc: true
+    toc_float: false
     self_contained: false
+categories:
+  - مصورسازی
+  - متن کاوی
+  - ggplot2
+preview: preview.png
+twitter:
+  site: "@mcmakhaee"
+  creator: "@mcmakhaee"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE,message = FALSE)
 ```
 
+### معرفی
 
 راه های مختلفی برای مصورسازی داده های متنی وجود دارد. مثلا محبوب ترین روش نشان دادن داده های متنی استفاده از ابرکلمه ها (wordclouds) است. البته ابرکلمات بیش از حد مورد استفاده قرار می گیرند و  جذابیت قبلشان را دیگر ندارند. در این پست  به شما نشان می دهم که چطور با یک روش دیگر و جالب داده های متنی را مصورسازی کنیم.
 
@@ -28,6 +41,7 @@ library(ggpage)
 library(beyt)
 library(delgosha)
 library(ggthemes)
+library(rmarkdown)
 ```
 
 ```{r}
@@ -36,13 +50,14 @@ poems %>%
   head()
 ```
 
+### نحوه استفاده 
 
 کتابخانه `ggpage` دو تابع اصلی دارد:
 
 1. `ggpage_build` که برای ما یک دیتافریم می سازد که هر سطر آن را یک کلمه و محل قرار گیری آن کلمه در نمودار تشکیل می دهد.
 2. `ggpage_plot` 
 
-```{r}
+```{r layout="l-body-outset"}
 
 ferdowsi <- poems %>% 
   #filter(poet == 'فردوسی') %>%
@@ -51,7 +66,8 @@ ferdowsi <- poems %>%
          book = book_title) %>%  
   separate_rows(text,sep = '   ') %>% 
   head(5000) 
-  
+
+paged_table(head(ferdowsi,10))
 ```
 
 
@@ -69,7 +85,7 @@ ferdowsi %>%
 
 راست به چپ
 
-```{r fig.height=15, fig.width=15}
+```{r layout="l-body-outset", fig.height=15, fig.width=15}
 
 ferdowsi %>% 
   

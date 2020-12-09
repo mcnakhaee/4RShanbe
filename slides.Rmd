@@ -1,0 +1,6 @@
+---
+title: "slides"
+site: distill::distill_website
+listing: posts
+---
+چارشنبه

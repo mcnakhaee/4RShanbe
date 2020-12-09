@@ -1,0 +1,102 @@
+
+@font-face {
+  font-family: 'Nahid-FD';
+  src: url('fonts/Nahid-FD.eot');
+  src: url('fonts/Nahid-FD.eot?#iefix') format('embedded-opentype'),
+       url('fonts/Nahid-FD.svg#Nahid-FD') format('svg'),
+       url('fonts/Nahid-FD.ttf') format('truetype'),
+       url('fonts/Nahid-FD.woff') format('woff'),
+       url('fonts/Nahid-FD.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+h1,h2,h3,h4,h5,h6, title, body {
+  direction: rtl;
+  font-family: 'Nahid-FD';
+}
+
+
+d-code {
+  direction: ltr;
+  color: #383838;
+  font-weight: 400;
+  font-size: 0.9em;
+}
+
+code {
+  direction: ltr;
+  font-family: 'Fira Mono', sans-serif;
+  color: #383838;
+  font-weight: 400;
+  font-size: 0.9em;
+}
+
+.distill-site-nav {
+  color: #00f5d4;
+  background-color: #14213d;
+  font-size: 16px;
+  font-weight: 300;
+  direction: rtl;
+}
+
+.distill-site-nav a {
+  color: inherit;
+  text-decoration: none;
+  direction: rtl;
+}
+
+.distill-site-nav a:hover {
+  color: white;
+  direction: rtl;
+}
+
+.distill-site-header {
+  direction: rtl;
+}
+
+.distill-site-footer {
+}
+
+
+.posts-list .description h2
+.posts-list .description p {
+  
+  direction: rtl;
+}
+
+.posts-list {
+  margin-top: 60px;
+  margin-bottom: 24px;
+  direction: rtl;
+
+}
+
+@media print {
+  .distill-site-nav {
+    display: none;
+  }
+}
+
+  
+.d-article {
+  font-family: 'Nahid-FD';
+  font-weight: 300;
+  direction: rtl;
+  
+}
+
+
+.d-article iframe {
+  border: none;
+  direction: rtl;
+  font-family: 'Nahid-FD';
+}
+
+.sourceCode {
+  direction: ltr;
+  font-family: 'Fira Mono', sans-serif;
+}
+

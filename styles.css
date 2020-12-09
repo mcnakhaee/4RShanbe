@@ -1,6 +1,21 @@
-h1,h2,h3,h4,h5,h6, title, body {
-  direction: rtl;
+
+@font-face {
+  font-family: 'Nahid-FD';
+  src: url('fonts/Nahid-FD.eot');
+  src: url('fonts/Nahid-FD.eot') format('embedded-opentype'),
+       url('fonts/Nahid-FD.svg') format('svg'),
+       url('fonts/Nahid-FD.ttf') format('truetype'),
+       url('fonts/Nahid-FD.woff') format('woff'),
+       url('fonts/Nahid-FD.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
   
+}
+
+
+h1,h2,h3,h4,h5,h6, title, body,p {
+  direction: rtl;
+  font-family: 'Nahid-FD', sans-serif;
 }
 
 
@@ -66,15 +81,18 @@ code {
 }
 
   
-.d-article {
+d-article {
+  font-family: 'Nahid-FD', sans-serif;
   font-weight: 300;
   direction: rtl;
+  
 }
 
 
 .d-article iframe {
   border: none;
   direction: rtl;
+  font-family: 'Nahid-FD', sans-serif;
 }
 
 .sourceCode {
