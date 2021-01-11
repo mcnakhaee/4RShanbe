@@ -1,0 +1,25 @@
+---
+title: "dumbbell plots"
+description: |
+  A short description of the post.
+author:
+  - name: mcnakhes
+    url: mcnakhaee.com
+date: 01-08-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+```{r eval=FALSE}
+install.packages('ggalt')
+```
+
+
+https://data-se.netlify.app/2018/05/23/playing-around-with-dumbbell-plots/

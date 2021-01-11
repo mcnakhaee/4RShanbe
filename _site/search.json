@@ -6,21 +6,21 @@
       "description": "Some additional details about the blog",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2020-12-09T15:36:27+00:00"
+      "last_modified": "2020-12-13T15:57:17+00:00"
     },
     {
       "path": "index.html",
       "title": "چارشنبه",
       "author": [],
       "contents": "\nچارشنبه\n\n\n\n",
-      "last_modified": "2020-12-09T15:36:28+00:00"
+      "last_modified": "2020-12-13T15:57:19+00:00"
     },
     {
       "path": "slides.html",
       "title": "slides",
       "author": [],
       "contents": "\nچارشنبه\n\n\n\n",
-      "last_modified": "2020-12-09T15:36:29+00:00"
+      "last_modified": "2020-12-13T15:57:20+00:00"
     }
   ],
   "collections": ["posts/posts.json"]

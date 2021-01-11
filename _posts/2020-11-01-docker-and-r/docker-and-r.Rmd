@@ -6,6 +6,7 @@ author:
   - name: mcnakhes
     url: mcnakhaee.com
 date: 11-01-2020
+draft: true
 output:
   distill::distill_article:
     self_contained: false
@@ -27,7 +28,6 @@ knitr::opts_chunk$set(echo = TRUE)
  
 ```{bash eval = FALSE}
 docker run --rm -p 8787:8787 rocker/verse
-
 ```
  
  کاری که این خط کدانجام می دهد این است که یک کانتینر داکر که Rstudio و چندین کتابخانه کاربردی R را در خود دارد برای ما اجرا می کند.
@@ -56,7 +56,6 @@ docker run --rm -p 8787:8787 rocker/verse
  
 ```{bash,eval = FALSE}
 docker run --rm -e PASSWORD=<Your-PASS> -v c:\data:/home/rstudio/test -p 8787:8787 rocker/verse
-
 ```
  
  
@@ -80,8 +79,6 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
  
 ```{bash,eval = FALSE}
 $ docker commit -m 'devtools+remotes' 6e66 verse_dev
-
-
 ```
  
  حالا لیست  ایمیج های داکر را می توانیم بررسی کنیم تا ببینیم که ایمیج ما ذخیره شده است یا خیر.

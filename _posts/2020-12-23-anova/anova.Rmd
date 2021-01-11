@@ -1,0 +1,33 @@
+---
+title: "anova"
+description: |
+  A short description of the post.
+author:
+  - name: mcnakhes
+    url: mcnakhaee.com
+date: 12-23-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r,eval=FALSE}
+install.packages(c("afex", "emmeans"))
+```
+
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(afex)
+```
+
+```{r}
+diet <- read_csv('../../data/anova/Diet_R.csv')
+```
+

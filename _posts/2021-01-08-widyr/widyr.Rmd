@@ -1,0 +1,84 @@
+---
+title: "widyr"
+description: |
+  A short description of the post.
+author:
+  - name: mcnakhes
+    url: mcnakhaee.com
+date: 01-08-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r}
+library(widyr)
+library(tidyverse)
+library(ggraph)
+library(tidygraph)
+```
+
+
+```{r}
+food <- read_csv('../../data/mamifood_dataset.csv')
+```
+
+
+
+```{r}
+food <- food %>%
+  mutate(ingrid = str_remove_all(ingrid,"'"),
+         ingrid = str_remove_all(ingrid, fixed("[")),
+         ingrid = str_remove_all(ingrid, fixed("]")))
+```
+
+```{r}
+khoresh <- food %>%
+  filter(subgroup == 'خورش')
+```
+
+
+
+```{r}
+khoresh_long <- food  %>%
+  separate_rows(ingrid,sep = ',') %>%
+  separate_rows(ingrid,sep = '،')
+
+khoresh_long
+```
+
+
+```{r}
+khoresh_long %>% 
+  pairwise_count(item = ingrid, feature = name)
+```
+
+```{r}
+khoresh_long %>% 
+  pairwise_count(item = ingrid, feature = name,sort = TRUE, upper = FALSE) %>%
+  filter(n >10) %>%
+  rename(from = item1,to =item2)%>% 
+  as_tbl_graph() %>% 
+  ggraph(layout = 'kk') +
+  geom_node_text(aes(label = name)) +
+  geom_edge_link(aes(alpha = n)) +
+  geom_node_point() +
+  theme_graph()
+  
+```
+```{r}
+dadegan::spotify %>%
+  distinct(track_name, .keep_all = TRUE) %>%
+  pairwise_dist(item = track_name,
+                feature = artist_name,
+                value = valence) %>%
+  arrange(distance)
+```
+
+
+https://cran.r-project.org/web/packages/widyr/vignettes/intro.html

@@ -1,0 +1,29 @@
+---
+title: " مجموعه ای از دیتاست های مربوط به کرونا و استفاده از آن ها در R"
+description: |
+  A short description of the post.
+author:
+  - name: mcnakhes
+    url: mcnakhaee.com
+date: 12-16-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+https://github.com/kjhealy/covdata
+```{r}
+remotes::install_github("kjhealy/covdata")
+```
+https://kjhealy.github.io/covmobility/
+
+```{r}
+remotes::install_github("kjhealy/covmobility")
+```
+

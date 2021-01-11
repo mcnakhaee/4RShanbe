@@ -1,0 +1,96 @@
+---
+title: "مصورسازی متغیرهای دسته ای با کتابخانه ggalluvial"
+description: |
+  A short description of the post.
+author:
+  - name: mcnakhes
+    url: mcnakhaee.com
+date: 12-23-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(delgosha)
+import_all_fonts()
+
+```
+
+
+```{r,eval=FALSE}
+install.packages('ggalluvial')
+```
+
+
+```{r}
+library(readr)
+library(ggplot2)
+library(tidyverse)
+library(ggalluvial)
+library(ggthemes)
+library(delgosha)
+```
+
+```{r message=FALSE, warning=FALSE}
+jadi_survey <- read_csv('jadi_survey/data_94_98.csv')
+```
+
+```{r}
+is_alluvia_form(jadi_survey)
+```
+
+```{r}
+jadi_survey%>%
+  count()
+```
+
+
+```{r fig.height= 10,fig.width=20}
+jadi_survey%>%
+  count(education,experience,sex,tab_space)%>%
+  filter(n >80)%>%
+ggplot(aes(y = n, axis1 = education,axis2 = experience )) +
+  geom_alluvium(aes(fill = sex),width = 1/12) +
+  geom_stratum(width = 1/12, fill = "white", color = "grey") + 
+    geom_text(stat = "stratum", aes(label = after_stat(str_wrap(stratum,width = 20))),reverse = TRUE) +
+  scale_fill_tableau() +
+  coord_flip() +
+  theme_farsh_fa() 
+  
+
+```
+```{r fig.height= 10,fig.width=20}
+jadi_survey %>%
+  separate_rows(programming_languages, sep = ',') %>%
+  separate_rows(programming_languages, sep = ';') %>%
+  mutate(education = str_remove_all(education,
+                                    'در حال تحصیل در دوره ')) %>%
+  add_count(programming_languages) %>%
+  filter(n > 500) %>%
+  count(education, experience, sex, programming_languages) %>%
+  ggplot(aes(
+    y = n,
+    axis1 = education,
+    axis2 = experience,
+    axis3 = programming_languages
+  )) +
+  geom_alluvium(aes(fill = sex), width = 1 / 12) +
+  geom_stratum(width = 1 / 12,
+               fill = "white",
+               color = "grey") +
+  geom_text(stat = "stratum", aes(label = after_stat(str_wrap(stratum, width = 20))), reverse = TRUE) +
+  scale_fill_tableau() +
+  coord_flip() +
+  theme_farsh_fa()
+
+```
+
+```{r}
+
+```
+
+منبع:
+https://cran.r-project.org/web/packages/ggalluvial/vignettes/ggalluvial.html

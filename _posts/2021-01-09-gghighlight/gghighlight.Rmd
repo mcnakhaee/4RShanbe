@@ -1,0 +1,160 @@
+---
+title: "gghighlight"
+description: |
+  A short description of the post.
+author:
+  - name: mcnakhes
+    url: mcnakhaee.com
+date: 01-09-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r, eval=FALSE}
+install.packages('gghighlight')
+```
+
+
+```{r}
+library(gghighlight)
+library(tidyverse)
+library(Shafaf)
+library(lubridate)
+
+#devtools::install_github('mcnakhaee/shafaf')
+
+```
+```{r}
+joined <- unvotes::un_votes %>%
+  inner_join(unvotes::un_roll_calls, by = "rcid")%>%
+  inner_join(unvotes::un_roll_call_issues, by = "rcid")
+
+n_votes <- joined %>%
+  mutate(date = as_date(date),
+         year =  year(date)) %>%
+  group_by(year = year(date), issue) %>%
+  summarize(votes = n(),
+            percent_yes = mean(vote == "yes"))
+```
+
+```{r fig.height=10,fig.width=10}
+n_votes  %>%
+  #filter(votes >100)%>%
+  ggplot(aes(x = year,y = votes,color = issue)) +
+  geom_line()
+```
+
+```{r}
+n_votes  %>%
+  #filter(votes >100)%>%
+  ggplot(aes(x = year,y = votes,color = issue)) +
+  geom_line() +
+  gghighlight(issue == 'Colonialism')
+```
+
+```{r}
+n_votes  %>%
+  #filter(votes >100)%>%
+  ggplot(aes(x = year,y = votes,color = issue)) +
+  geom_line() +
+  gghighlight(issue %in% c('Colonialism','Human rights'))
+```
+
+
+
+
+
+```{r fig.height=3,fig.width=10}
+n_votes_country <- joined %>%
+  mutate(date = as_date(date),
+         year =  year(date)) %>%
+  group_by(year = year(date), issue,country) %>%
+  summarize(votes = n(),
+            percent_yes = mean(vote == "yes"))
+
+n_votes_country %>%
+  ggplot(aes(x = year, y = percent_yes,color = country))+
+  geom_line() +
+  facet_wrap(~issue) +
+  theme(legend.position = 'none')
+```
+```{r}
+joined %>%
+  count(country,sort =TRUE)
+```
+
+```{r fig.height=3,fig.width=10}
+n_votes_country %>%
+  
+  ggplot(aes(x = year, y = percent_yes,color = country))+
+  geom_line() +
+  gghighlight( country %in% c('United States of America',
+                              'Netherlands',
+                              'Russian Federation',
+                              'United Kingdom of Great Britain and Northern Ireland',
+                            'Iran (Islamic Republic of)'  )) +
+  facet_wrap(~issue) +
+  theme(legend.position = 'top') +
+  theme_minimal()
+```
+
+```{r}
+n_votes_country %>%
+  
+  ggplot(aes(x = year, y = percent_yes,color = country))+
+  geom_line() +
+  gghighlight( country %in% c('United States of America',
+                              'Netherlands',
+                              'Russian Federation',
+                              'United Kingdom of Great Britain and Northern Ireland',
+                            'Iran (Islamic Republic of)'  ),
+               unhighlighted_colour =  alpha("pink", 0.4)) +
+  facet_wrap(~issue) +
+  theme(legend.position = 'top') +
+  theme_minimal()
+```
+
+
+
+```{r fig.height=3,fig.width=10}
+n_votes %>%
+  
+  ggplot(aes(x = year, y = percent_yes,color = issue))+
+  geom_line() +
+  gghighlight( max(percent_yes),
+               max_highlight = 2,
+               use_direct_label = FALSE) +
+  theme(legend.position = 'top') +
+  theme_minimal()
+```
+
+
+
+
+```{r}
+joined %>% 
+  count(issue) %>%
+  ggplot(aes(x = issue,y = n,fill = issue)) +
+  geom_col() +
+  coord_flip() +
+  theme(legend.position = 'none')
+```
+```{r}
+joined %>% 
+  count(issue) %>%
+  ggplot(aes(x = issue,y = n,fill = issue)) +
+  geom_col() +
+  gghighlight(issue %in% c('Colonialism','Human rights')) +
+  coord_flip() +
+  theme(legend.position = 'none')
+```
+
+
+https://cran.r-project.org/web/packages/gghighlight/vignettes/gghighlight.html
+

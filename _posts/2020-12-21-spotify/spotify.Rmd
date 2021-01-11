@@ -1,0 +1,22 @@
+---
+title: "جمع آوری اطلاعات از Spoitfy"
+description:
+   در این پست به شما نشان می دهیم که چطور با R به API سرویس محبوب Spotify دسترسی پیدا کنیم و مجموعه از اطلاعات مختلف در خصوص آهنگ‌های ایرانی را جمع کنیم.
+author:
+  - name: mcnakhes
+    url: mcnakhaee.com
+date: 12-21-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+devtools::install_github('charlie86/spotifyr')
+```
+

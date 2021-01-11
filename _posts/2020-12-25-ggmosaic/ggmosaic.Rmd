@@ -1,0 +1,43 @@
+---
+title: "مصورسازی متغیرهای دسته ای با نمودارهای موزائیکی"
+description: |
+  A short description of the post.
+author:
+  - name: mcnakhes
+    url: mcnakhaee.com
+date: 12-25-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r}
+install.packages('ggmosaic')
+```
+
+```{r}
+library(tidyverse)
+library(ggmosaic)
+library(ggthemes)
+```
+```{r fig.height=10, fig.width=10}
+jadi_survey %>%
+  ggplot()+
+  geom_mosaic(aes(x=product(education,age),fill= sex))+
+  scale_fill_colorblind()+
+  theme_tufte()
+```
+
+
+
+```{r}
+ggplot(data = fly) +
+   geom_mosaic(aes(x = product(DoYouRecline, RudeToRecline), fill=DoYouRecline), na.rm=TRUE) + 
+  labs(x = "Is it rude recline? ", title='f(DoYouRecline | RudeToRecline) f(RudeToRecline)')
+```
+

@@ -1,5 +1,56 @@
 [
   {
+    "path": "posts/2021-01-09-gghighlight/",
+    "title": "gghighlight",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "mcnakhes",
+        "url": "mcnakhaee.com"
+      }
+    ],
+    "date": "2021-01-09",
+    "categories": [],
+    "contents": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n# A tibble: 199 x 2\n   country                      n\n   <chr>                    <int>\n 1 Denmark                   5275\n 2 Australia                 5272\n 3 Canada                    5272\n 4 Sweden                    5271\n 5 Netherlands               5270\n 6 Norway                    5266\n 7 New Zealand               5262\n 8 United States of America  5256\n 9 Belgium                   5255\n10 India                     5255\n# … with 189 more rows\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nhttps://cran.r-project.org/web/packages/gghighlight/vignettes/gghighlight.html\n\n\n\n",
+    "preview": "posts/2021-01-09-gghighlight/gghighlight_files/figure-html5/unnamed-chunk-4-1.png",
+    "last_modified": "2021-01-11T19:40:10+00:00",
+    "input_file": "gghighlight.utf8.md"
+  },
+  {
+    "path": "posts/2020-12-23-ggalluvial/",
+    "title": "مصورسازی متغیرهای دسته ای با کتابخانه ggalluvial",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "mcnakhes",
+        "url": "mcnakhaee.com"
+      }
+    ],
+    "date": "2020-12-23",
+    "categories": [],
+    "contents": "\n\n\n\n\n\n\n\n\n\n\n[1] TRUE\n\n\n# A tibble: 1 x 1\n      n\n  <int>\n1 10956\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+    "preview": "posts/2020-12-23-ggalluvial/ggalluvial_files/figure-html5/unnamed-chunk-6-1.png",
+    "last_modified": "2020-12-24T16:43:24+00:00",
+    "input_file": "ggalluvial.utf8.md"
+  },
+  {
+    "path": "posts/2020-12-21-spotify/",
+    "title": "جمع آوری اطلاعات از Spoitfy",
+    "description": "در این پست به شما نشان می دهیم که چطور با R به API سرویس محبوب Spotify دسترسی پیدا کنیم و مجموعه از اطلاعات مختلف در خصوص آهنگ‌های ایرانی را جمع کنیم.",
+    "author": [
+      {
+        "name": "mcnakhes",
+        "url": "mcnakhaee.com"
+      }
+    ],
+    "date": "2020-12-21",
+    "categories": [],
+    "contents": "\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill at https://rstudio.github.io/distill.\n\n\n\n",
+    "preview": {},
+    "last_modified": "2020-12-21T19:58:42+00:00",
+    "input_file": "spotify.utf8.md"
+  },
+  {
     "path": "posts/2020-12-04-remove-duplicates/",
     "title": "شناسایی و حذف داده های تکراری",
     "description": "در این پست به شما نشان خواهم که چطور با استفاده از R و کتابخانه dplyr مشاهدات تکراری را پیدا و حذف کنیم.",
@@ -85,8 +136,8 @@
     ],
     "contents": "\n\nContents\nمعرفی\nنحوه استفاده\n\nمعرفی\nراه های مختلفی برای مصورسازی داده های متنی وجود دارد. مثلا محبوب ترین روش نشان دادن داده های متنی استفاده از ابرکلمه ها (wordclouds) است. البته ابرکلمات بیش از حد مورد استفاده قرار می گیرند و جذابیت قبلشان را دیگر ندارند. در این پست به شما نشان می دهم که چطور با یک روش دیگر و جالب داده های متنی را مصورسازی کنیم.\n\n\ninstall.packages(\"ggpage\")\n\n\n\n\n\nlibrary(tidyverse)\nlibrary(ggpage)\nlibrary(beyt)\nlibrary(delgosha)\nlibrary(ggthemes)\nlibrary(rmarkdown)\n\n\n\n\n\npoems %>% \n  filter(poet == 'فردوسی') %>% \n  head()\n\n\n# A tibble: 6 x 5\n  poet   century book_title poem_title       poem                     \n  <chr>    <dbl> <chr>      <chr>            <chr>                    \n1 فردوسی       4 آغاز کتاب  بخش ۱ - آغاز کت… به نام خداوند جان و خرد …\n2 فردوسی       4 آغاز کتاب  بخش ۲ - ستایش خ… کنون ای خردمند وصف خرد  …\n3 فردوسی       4 آغاز کتاب  بخش ۳ - گفتار ا… از آغاز باید که دانی درس…\n4 فردوسی       4 آغاز کتاب  بخش ۴ - گفتار ا… چو زین بگذری مردم آمد پد…\n5 فردوسی       4 آغاز کتاب  بخش ۵ - گفتار ا… ز یاقوت سرخست چرخ کبود  …\n6 فردوسی       4 آغاز کتاب  بخش ۶ - در آفری… چراغست مر تیره شب را بسی…\n\nنحوه استفاده\nکتابخانه ggpage دو تابع اصلی دارد:\nggpage_build که برای ما یک دیتافریم می سازد که هر سطر آن را یک کلمه و محل قرار گیری آن کلمه در نمودار تشکیل می دهد.\nggpage_plot\n\n\nferdowsi <- poems %>% \n  #filter(poet == 'فردوسی') %>%\n  filter(century == 3) %>% \n  rename(text = poem,\n         book = book_title) %>%  \n  separate_rows(text,sep = '   ') %>% \n  head(5000) \n\npaged_table(head(ferdowsi,10))\n\n\n\n\n{\"columns\":[{\"label\":[\"poet\"],\"name\":[1],\"type\":[\"chr\"],\"align\":[\"left\"]},{\"label\":[\"century\"],\"name\":[2],\"type\":[\"dbl\"],\"align\":[\"right\"]},{\"label\":[\"book\"],\"name\":[3],\"type\":[\"chr\"],\"align\":[\"left\"]},{\"label\":[\"poem_title\"],\"name\":[4],\"type\":[\"chr\"],\"align\":[\"left\"]},{\"label\":[\"text\"],\"name\":[5],\"type\":[\"chr\"],\"align\":[\"left\"]}],\"data\":[{\"1\":\"رودکی\",\"2\":\"3\",\"3\":\"قصاید و قطعات\",\"4\":\"شمارهٔ ۱\",\"5\":\"گر من این دوستی تو ببرم تا لب گور\"},{\"1\":\"رودکی\",\"2\":\"3\",\"3\":\"قصاید و قطعات\",\"4\":\"شمارهٔ ۱\",\"5\":\"بزنم نعره ولیکن ز تو بینم هنرا\"},{\"1\":\"رودکی\",\"2\":\"3\",\"3\":\"قصاید و قطعات\",\"4\":\"شمارهٔ ۱\",\"5\":\"اثر میر نخواهم که بماند به جهان\"},{\"1\":\"رودکی\",\"2\":\"3\",\"3\":\"قصاید و قطعات\",\"4\":\"شمارهٔ ۱\",\"5\":\"میر خواهم که بماند به جهان در اثرا\"},{\"1\":\"رودکی\",\"2\":\"3\",\"3\":\"قصاید و قطعات\",\"4\":\"شمارهٔ ۱\",\"5\":\"هر که را رفت، همی باید رفته شمری\"},{\"1\":\"رودکی\",\"2\":\"3\",\"3\":\"قصاید و قطعات\",\"4\":\"شمارهٔ ۱\",\"5\":\"هر که را مرد، همی باید مرده شمرا\"},{\"1\":\"رودکی\",\"2\":\"3\",\"3\":\"قصاید و قطعات\",\"4\":\"شمارهٔ ۲\",\"5\":\"به حق نالم ز هجر دوست زارا\"},{\"1\":\"رودکی\",\"2\":\"3\",\"3\":\"قصاید و قطعات\",\"4\":\"شمارهٔ ۲\",\"5\":\"سحرگاهان چو بر گلبن هزارا\"},{\"1\":\"رودکی\",\"2\":\"3\",\"3\":\"قصاید و قطعات\",\"4\":\"شمارهٔ ۲\",\"5\":\"قضا، گر داد من نستاند از تو\"},{\"1\":\"رودکی\",\"2\":\"3\",\"3\":\"قصاید و قطعات\",\"4\":\"شمارهٔ ۲\",\"5\":\"ز سوز دل بسوزانم قضا را\"}],\"options\":{\"columns\":{\"min\":{},\"max\":[10]},\"rows\":{\"min\":[10],\"max\":[10]},\"pages\":{}}}\n  \n\n\n\n#ncol = 30,nrow = 30\nferdowsi %>% \n  #head() %>% \n  ggpage_build(ncol = 30,nrow = 30) %>% \n  #filter(!is.na(word)) %>% View()\n  ggpage_plot() +\n  theme_fa()\n\n\n\n\nاین نمودار به خودی خود نمودار خیلی کاربردی نیست. با این حال می توانیم با کمی نغییر نمودارهای جالبی با آن بسازیم.\nراست به چپ\n\n\nferdowsi %>% \n  \n  ggpage_build(ncol = 30,nrow = 30,align = 'both') %>% \n  mutate(character_ = case_when(word == 'رستم' ~ 'rostam',\n                                word == 'فریدون' ~'fereydoon',\n                                word == '' ~'sohrab',\n                                word == 'اسفندیار'~ 'esfandyar',\n                                TRUE ~ 'other')) %>% \n  ggpage_plot(aes(fill = character_ )) +\n  scale_fill_tableau()+\n  theme_fa()\n\n\n\n\n\n\n\n",
     "preview": "posts/2020-10-14-ggpage/ggpage_files/figure-html5/unnamed-chunk-5-1.png",
-    "last_modified": "2020-12-09T15:37:47+00:00",
-    "input_file": "ggpage.utf8.md"
+    "last_modified": "2020-12-09T15:37:48+00:00",
+    "input_file": {}
   },
   {
     "path": "posts/2020-10-13-ggridges/",
@@ -124,8 +175,8 @@
   },
   {
     "path": "posts/2020-07-28-corrr/",
-    "title": "همبستگی",
-    "description": "همبستگی متغیرها",
+    "title": "محاسبه و رسم همبستگی متغیرها",
+    "description": "در این پست با کتابخانه corrr آشنا خواهیم شد که به ما قابلیت های مختلفی برای محاسبه و رسم همبستگی متغیرهای یک دیتافریم می دهد.",
     "author": [
       {
         "name": "mcnakhes",
@@ -137,9 +188,9 @@
       "مصورسازی",
       "ggplot2"
     ],
-    "contents": "\r\n\r\n\r\n\r\nمقدمه\r\nکتابخانه های مورد نیاز\r\n\r\n\r\nlibrary(corrr)\r\nlibrary(tidyverse)\r\nlibrary(unvotes)\r\n\r\n\r\n\r\nnames(un_votes)\r\n\r\n[1] \"rcid\"         \"country\"      \"country_code\" \"vote\"        \r\n\r\n\r\n\r\n# A tibble: 6 x 4\r\n   rcid US    CA    CU   \r\n  <int> <fct> <fct> <fct>\r\n1     3 yes   no    yes  \r\n2     4 no    no    no   \r\n3     5 no    no    yes  \r\n4     6 no    no    yes  \r\n5     7 no    no    yes  \r\n6     8 no    yes   yes  \r\n\r\n\r\n\r\n",
-    "preview": {},
-    "last_modified": "2020-09-30T17:54:55+00:00",
+    "contents": "\nمقدمه\nیکی از گام های مهم برای پیاده سازی یک مدل یادگیری ماشین مرحله انتخاب ویژگی (feature selection) است. در این مرحله ما معمولا به دنبال این هستیم که از میان همه ویژگی هایی که در دیتاست موجود هستند تنها مهمترین ویژگی ها (متغیرهایی) که به ما برای پیشبینی متغیر هدف ما کمک می کنند را انتخاب کنیم تا عملکرد مدل مان را بهبود ببخشیم. به علاوه اگر فقط مهمترین ویژگی ها را انتخاب کنیم این مساله به ما کمک می کند تا خروجی مدل مان را به راحتی تفسیر کنیم ( هر چه تعداد متغیرهایی که مدل بر اساس آن پیشبینی انجام می دهد کمتر باشد فهم و درک خروجی مدل برای ما ساده تر می شود). یکی از صلی ترین روش ها برای انتخاب ویژگی محاسبه همبستگی بین ویژگی ها و حذف ویژگی هایی است که با متغیر هدف وابستگی زیادی ندارند یا همبستگی بالایی با بقیه ویژگی ها دارند.\nنصب\nکتابخانه corrr بر روی CRAN قرار دارد و برای همین با اجرای دستور زیر می توانیم این کتابخانه را نصب می کنیم.\n\n\ninstall.packages(\"corrr\")\n\n\n\nاستفاده از کتابخانه corrr\n\n\nlibrary(corrr)\nlibrary(tidyverse)\nlibrary(dadegan)\n\n\n\nاصلی ترین تابع کتابخانه corrr تابع correlate است .این تابع یک شی از نوع دیتافریم یا tbl را می گیرد و همبستگی بین متغیرهای را محاسبه می‌کند و آن‌ها را به صورت یک دیتافریم به ما باز می گرداند. در این دیتافریم هر ستون متناظر با یک متغیر و هر سطر نیز متناظر با یک متغیر است. یک دیتافریم از همبستگی ها را به ما باز می گرداند.\n\n\ncorr_df <- spotify %>%\n  select(danceability:time_signature)  %>%\n  correlate()\nhead(corr_df)\n\n\n# A tibble: 6 x 13\n  rowname danceability  energy     key loudness     mode speechiness\n  <chr>          <dbl>   <dbl>   <dbl>    <dbl>    <dbl>       <dbl>\n1 dancea…      NA       0.621   0.0660   0.439  -0.129       0.262  \n2 energy        0.621  NA       0.0662   0.762  -0.179       0.311  \n3 key           0.0660  0.0662 NA        0.0336 -0.0989      0.0655 \n4 loudne…       0.439   0.762   0.0336  NA      -0.207       0.165  \n5 mode         -0.129  -0.179  -0.0989  -0.207  NA          -0.00151\n6 speech…       0.262   0.311   0.0655   0.165  -0.00151    NA      \n# … with 6 more variables: acousticness <dbl>,\n#   instrumentalness <dbl>, liveness <dbl>, valence <dbl>,\n#   tempo <dbl>, time_signature <dbl>\n\nبه صورت پیشفرض correlate همبستگی پیرسون را برای ما محاسبه می‌کند ولی می‌توانیم با آرگومان method می‌توانیم از میان سایر روش‌های محاسبه همبستگی مثل kendall یا kendall استفاده کنیم.\nبه صورت پیشفرض این تابع مقادیر گمشده را نادیده می گیرد و فقط جفت مقادیر غیرگمشده را برای محاسبه همبستگی به کاربه علاوه، به صورت پیشفرض این تابع مقادیر گمشده را نادیده می گیرد و فقط جفت مقادیر غیرگمشده را برای محاسبه همبستگی به کار می برد.\nهمین طور به صورت پیشفرض مقدار همبستگی یک متغیر با خودش برابر با NA در نظر گرفته می شود. البته می توانیم این رفتار را با پارامتر diagonal تغییر دهیم.\nهمانطور که گفتم خروجی تابع correlate یک دیتافریم از کلاس tibble است. در این حالت می توانیم این خروجی را به وسیله پایپ لاین به عنوان ورودی به توابع دیگر کتابخانه های tidyverse بدهیم. به طول مثال، می توانیم فقط همبستگی هایی که بالاتر از 0.5 هستند را انتخاب کنیم.\n\n\ncorr_df %>% \n  filter(energy >0.5) %>%\n  select(danceability,loudness,valence) \n\n\n# A tibble: 3 x 3\n  danceability loudness valence\n         <dbl>    <dbl>   <dbl>\n1       NA        0.439   0.609\n2        0.439   NA       0.414\n3        0.609    0.414  NA    \n\nعلاوه بر تابع correlate کتابخانه corrr چندین تابع مفید دیگر را هم در دسترس ما قرار می دهد.یکی از این توابع تابع shave است که نیمه بالا یا پائین دیتافریم همبستگی ها را که اساسا تکراری است حذف می کند و به ما نمایش می دهد. تابع fashion هم خروجی دیتافریم همبستگی را کمی برای ما زیبا و مرتب می کند.\n\n\ncorr_df %>%\n  filter(energy > 0.5) %>%\n  shave() %>%\n  fashion() \n\n\n       rowname danceability energy  key loudness mode speechiness\n1 danceability                                                   \n2     loudness          .44    .76                               \n3      valence          .61    .64  .05                          \n  acousticness instrumentalness liveness valence tempo time_signature\n1                                                                    \n2                                                                    \n3                                                                    \n\nتابع focus کتابخانه corrr هم مثل تابع select عمل می کند با این تفاوت که نه تنها با ستون ها را انتخاب می کنیم بلکه می توانیم سطرها را هم انتخاب کنیم.\n\n\ncorr_df %>% \n  focus(danceability,loudness,valence,mirror = TRUE) \n\n\n# A tibble: 3 x 4\n  rowname      danceability loudness valence\n  <chr>               <dbl>    <dbl>   <dbl>\n1 danceability       NA        0.439   0.609\n2 loudness            0.439   NA       0.414\n3 valence             0.609    0.414  NA    \n\nرسم نمودارهای همبستگی\nکتابخانه corrr دو تابع هم برای رسم نمودار همبستگی بین متغیرهای در اختیار ما قرار می دهد. تابع اول rplot است که همبستگی بین متغیرها را به صورت دو به دو برای ما رسم می کند.\n\n\ncorr_df %>% \n  shave %>%\n  rplot\n\n\n\n\nتابع دیگر network_plot است که به نظرم ایده جالبی برای رسم رابطه همبستگی بین متغیرها دارد. این تابع مقدار همبستگی بین متغیرها را به صورت یک گراف (شبکه) برای ما رسم می کند که رنگ هر گراف متناظر با میزان همبستگی بین دو متغیر است.\n\n\ncorr_df %>% \n  network_plot(min_cor = 0.5,\n               curved = FALSE)\n\n\n\n\nمنبع:\nhttps://cran.r-project.org/web/packages/corrr/vignettes/using-corrr.html\n\n\n\n",
+    "preview": "posts/2020-07-28-corrr/distill-preview.png",
+    "last_modified": "2020-12-13T15:53:23+00:00",
     "input_file": {}
   },
   {
