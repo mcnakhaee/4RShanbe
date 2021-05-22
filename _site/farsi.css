@@ -46,10 +46,10 @@ html {
   --aside-color:     rgba(0, 0, 0, 0.6);
   --fig-cap-color:   rgba(0, 0, 0, 0.6);
   /*-- Specify custom fonts ~~~ must be imported above   --*/
-  --heading-font:    'Nahid-FD','Tajawal', sans-serif;
+  --heading-font:    'Nahid-FD', sans-serif;
   --mono-font:       'Lato', sans-serif;
   --body-font:       'Nahid-FD', sans-serif;
-  --navbar-font:     'Nahid-FD','Tajawal', sans-serif;
+  --navbar-font:     'Nahid-FD', sans-serif;
 }
 
 /*-- ARTICLE METADATA --*/
@@ -99,14 +99,16 @@ d-appendix {
 
 h1,h2,h3,h4,h5,h6, title, body,p {
   direction: rtl;
+  font-family: 'Nahid-FD', sans-serif;
 }
 
 .d-article iframe {
   direction: rtl;
+  font-family: 'Nahid-FD', sans-serif;
 }
 
 
 d-article {
   direction: rtl;
-  
+  font-family: 'Nahid-FD', sans-serif;
 }

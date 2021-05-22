@@ -18,6 +18,9 @@ knitr::opts_chunk$set(echo = FALSE)
 ```{r message=FALSE, warning=FALSE}
 library(trendyy)
 library(tidyverse)
+library(gtrendsR)
+library(delgosha)
+import_all_fonts()
 ```
 
 ```{r eval=FALSE, include=FALSE}
@@ -25,5 +28,57 @@ trendy(search_terms = c('Iran')) %>%
   get_interest()
 trendyy::get_interest_country()
 gtrends(keyword =  )
+```
+
+
+
+```{r}
+results <- gtrends(keyword = 'کرونا',
+                   geo = 'IR')
+results$interest_over_time %>%
+    ggplot(aes(date,y = hits,group =keyword )) +
+  geom_area() +
+  theme_tufte_fa()
+```
+```{r}
+
+search_terms <- c('قاسم سلیمانی',
+                  'استقلال',
+                  'پرسپولیس',
+                  'کرونا',
+                  'بهار')
+results <- gtrends(keyword = search_terms,
+                   geo = 'IR')
+
+results$interest_over_time %>%
+  #filter(hits == '<1')%>%
+  mutate(hits = if_else(hits=='<1','0.5',hits),
+         hits = as.numeric(hits)) %>%
+    ggplot(aes(date,y = hits,group =keyword,fill = keyword,color =keyword )) +
+  geom_smooth(se = FALSE)+
+  #geom_area() +
+  #facet_wrap(~keyword) +
+  theme_tufte_fa() 
+
+```
+```{r}
+
+results <- gtrends(keyword = search_terms,
+                   geo = 'IR',
+                   time =  "2020-01-01 2021-01-01")
+
+results$interest_over_time %>%
+  #filter(hits == '<1')%>%
+  mutate(hits = if_else(hits=='<1','0.5',hits),
+         hits = as.numeric(hits)) %>%
+    ggplot(aes(date,y = hits,group =keyword,fill = keyword,color =keyword )) +
+  geom_smooth(se = FALSE)+
+  #geom_area() +
+  #facet_wrap(~keyword) +
+  theme_tufte_fa() 
+
+```
+```{r}
+results$interest_by_city
 ```
 

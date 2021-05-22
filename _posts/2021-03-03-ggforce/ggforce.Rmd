@@ -1,0 +1,57 @@
+---
+title: "ggforce"
+description: |
+  A short description of the post.
+author:
+  - name: mcnakhes
+    url: mcnakhaee.com
+date: 03-03-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r}
+library(ggforce)
+library(tidyverse)
+library(delgosha)
+library(nycflights13)
+```
+
+```{r}
+spotify <- dadegan::spotify
+p <- spotify %>% 
+  filter(artist_name %in% c('Alireza Eftekhari','Mohammadreza Shajarian','Alireza Ghorbani')) %>% 
+  ggplot((aes(valence,energy,color = artist_name_farsi))) +
+  geom_point(alpha = 0.6,size = 3) +
+  labs(x = 'شادی',
+       y = 'محبوبیت',
+       title = 'مقایسه ای بین محبوبیت و شادی آهنگ های سه خواننده محبوب سنتی',
+       subtitle = '',
+       caption =  'مصورسازی: محمد چناریان نخعی',
+       color = '') #+
+  #facet_wrap(~artist_name_farsi) +
+  #scale_color_farsh() 
+p
+```
+
+```{r}
+p +
+  geom_mark_rect()
+```
+```{r}
+p + geom_mark_hull()
+```
+
+
+
+
+```{r}
+p + geom_mark_rect(aes(label = artist_name) )
+```
+

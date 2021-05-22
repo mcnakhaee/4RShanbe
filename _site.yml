@@ -3,20 +3,35 @@ title: "4Rshanbe"
 description: |
   4Rshanbe
 output_dir: "_site"
+theme: theme.css
 navbar:
   right:
     - text: "خانه"
       href: index.html
     - text: "درباره"
       href: about.html
+    - text: "Posts"
+      href: posts.html
+    - text: "Talks"
+      href: talks.html
+    - text: "Projects"
+      href: projects.html
+    - icon: fab fa-github
+      href: https://github.com/mcnakhaee
+    - icon: fab fa-twitter
+      href: https://twitter.com/m_cnakhaees
+    - icon: fas fa-home
+      href: index.html
     - icon: fa fa-github
       href: https://github.com/mcnakhaee
     - icon: fa fa-twitter
       href: https://twitter.com/?lang=en
 repository_url: https://github.com/mcnakhaee/4RShanbe
-output: 
-  distill::distill_article:
-    css: farsi.css
-    highlight: rstudio
-    highlight_downlit: true
-exclude: ["*.gz", "*.zip"]
+collections:
+  posts:
+    categories: true
+    categories_metadata: true
+    authors_metadata: false
+    feed_iems_max: 20 # default
+output:
+  distill::distill_article

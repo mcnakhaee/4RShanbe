@@ -1,0 +1,62 @@
+---
+title: "language detection"
+description: |
+  A short description of the post.
+author:
+  - name: mcnakhes
+    url: mcnakhaee.com
+date: 05-22-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r}
+library(tidyverse)
+library(beyt)
+library(tidytext)
+#library(cld3)
+library(cld2)
+sample_text <- poems %>% 
+  head(10)%>% 
+  mutate(text = as.character(poem))%>%
+  #slice_sample(n = 1000)%>% 
+  unnest_tokens(word,text)%>% 
+  pull(word)
+  
+```
+
+
+```{r}
+file_ftz = system.file("language_identification/lid.176.ftz", package = "fastText")
+
+
+reults <- fastText::language_identification(input_obj = sample_text,
+                                    pre_trained_language_model_path  = file_ftz)
+reults$word <- sample_text
+```
+```{r}
+file_bin = file.path("language_identification/lid.176.bin")
+
+
+reults <- fastText::language_identification(input_obj = sample_text,
+                                    pre_trained_language_model_path  = file_bin)
+reults$word <- sample_text
+```
+
+```{r}
+
+reults <- fastText::language_identification(input_obj = poems$poem[1:10],
+                                    pre_trained_language_model_path  = file_bin)
+
+```
+
+
+
+```{r}
+cld2::detect_language(poems$poem[1:10])
+```
+
+
+https://mlampros.github.io/2021/05/14/fasttext_language_identification/
+

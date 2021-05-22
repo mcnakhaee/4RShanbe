@@ -6,21 +6,42 @@
       "description": "Some additional details about the blog",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2020-12-13T15:57:17+00:00"
+      "last_modified": "2021-05-22T22:31:40+00:00"
     },
     {
       "path": "index.html",
       "title": "چارشنبه",
       "author": [],
       "contents": "\nچارشنبه\n\n\n\n",
-      "last_modified": "2020-12-13T15:57:19+00:00"
+      "last_modified": "2021-05-22T22:31:41+00:00"
+    },
+    {
+      "path": "posts.html",
+      "title": "Posts",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2021-05-22T22:31:42+00:00"
     },
     {
       "path": "slides.html",
       "title": "slides",
       "author": [],
       "contents": "\nچارشنبه\n\n\n\n",
-      "last_modified": "2020-12-13T15:57:20+00:00"
+      "last_modified": "2021-05-22T22:31:43+00:00"
+    },
+    {
+      "path": "wiki_trends.html",
+      "title": "Untitled",
+      "description": "A new article created using the Distill format.\n",
+      "author": [
+        {
+          "name": "Nora Jones",
+          "url": "https://example.com/norajones"
+        }
+      ],
+      "date": "`r Sys.Date()`",
+      "contents": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+      "last_modified": "2021-05-22T22:31:43+00:00"
     }
   ],
   "collections": ["posts/posts.json"]

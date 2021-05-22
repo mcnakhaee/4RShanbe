@@ -1,0 +1,55 @@
+---
+title: "Untitled"
+description: |
+  A new article created using the Distill format.
+author:
+  - name: Nora Jones 
+    url: https://example.com/norajones
+    affiliation: Spacely Sprockets
+    affiliation_url: https://example.com/spacelysprokets
+date: "`r Sys.Date()`"
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r}
+# library(wikipediatrend)
+# library(tidyverse)
+# library(WikipediR)
+# 
+
+```
+
+
+```{r}
+#wikipediatrend::wiki_search('iran',lang = 'fa')
+```
+
+```{r}
+# wikipediatrend::wiki_search('ایران',lang = 'fa')
+# wikipediatrend::wp_trend(c(
+#   'اصفهان',
+#   'تهران',
+#   'مشهد',
+#   'قاسم سلیمانی'
+#                            ),lang = 'en') %>%
+#   ggplot(aes(x = date,y  = views,color = article ,group = article )) +
+#   geom_line(se = FALSE)
+```
+```{r}
+# WikipediR::page_content(project = "wikipedia",
+#                         page_name = 'روز ولنتاین',
+#                         language = 'fa',
+#                         
+#                         as_wikitext = TRUE,clean_response = TRUE)
+# 
+# 
+# WikipediR::categories_in_page(project = "wikipedia",
+#                         pages  = 'روز ولنتاین',
+#                         language = 'fa',
+# )
+```
+
