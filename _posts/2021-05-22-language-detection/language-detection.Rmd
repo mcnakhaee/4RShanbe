@@ -9,6 +9,8 @@ date: 05-22-2021
 output:
   distill::distill_article:
     self_contained: false
+draft: true
+
 ---
 
 ```{r}
@@ -56,6 +58,31 @@ reults <- fastText::language_identification(input_obj = poems$poem[1:10],
 ```{r}
 cld2::detect_language(poems$poem[1:10])
 ```
+
+
+
+```{r}
+sample_poems <- poems%>%
+  filter(poet == 'هجویری')%>%
+  slice_sample(n  = 1000 )
+
+reults <- fastText::language_identification(input_obj = sample_poems$poem,
+                                    pre_trained_language_model_path  = file_ftz,
+                                    k = 2)
+```
+
+
+
+
+
+
+
+```{r}
+install.packages('textcat')
+```
+
+
+
 
 
 https://mlampros.github.io/2021/05/14/fasttext_language_identification/
